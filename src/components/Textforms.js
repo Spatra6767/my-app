@@ -15,33 +15,63 @@ export default function Textforms(props) {
   const onUpcase=()=>{
     let newText=text.toUpperCase();
     setText(newText);
+    if(text.length===0){
+      props.showAlert("Please enter some text to convert","warning");
+      return;
+    }
+    props.showAlert("Converted to Uppercase","success");
     
   }
    const onLowcase=()=>{
     let newText=text.toLowerCase();
     setText(newText);
+    if(text.length===0){
+      props.showAlert("Please enter some text to convert","warning");
+      return;
+    }
+    props.showAlert("Converted to Lowercase","success");
     
   }
    const onClear=()=>{
     let newText="";
     setText(newText);
+    if(text.length===0){
+      props.showAlert("Text is already empty","warning");
+      return;
+    }
+    props.showAlert("Text Cleared","success");
     
   }
   const handleExtraSpaces=()=>{
     let newText=text.split(/[ ]+/);
     setText(newText.join(" "));
+    if(text.length===0){
+      props.showAlert("Please enter some text to convert","warning");
+      return;
+    }
+    props.showAlert("Extra spaces removed","success");
   }
   const handleCopy=()=>{
     let text=document.getElementById("exampleFormControlTextarea1");
     text.select();
     navigator.clipboard.writeText(text.value);
+    if(text.value.length===0){
+      props.showAlert("Please enter some text to copy","warning");
+      return;
+    }
+    props.showAlert("Text Copied to Clipboard","success");
   }
    const [text, setText] = useState("");
 
+   const wordCount = (text) => {
+    return text.trim() === '' ? 0 : text.trim().split(/\s+/).length;
+  }
+  
+
   return (
     <div>
-  <div className="form-group">
-    <label style={{display:'flex',justifyContent:'center',color:props.mode==='light'?'black':'white'}} htmlFor="exampleFormControlTextarea1">
+  <div className="form-group ">
+    <label style={{display:'flex',justifyContent:'center',color:props.mode==='light'?'black':'white',marginTop:'50px'}} htmlFor="exampleFormControlTextarea1">
        <h3> Write Something</h3>
         </label>
     <textarea className={`form-control text-${props.mode==='light'?'dark':'light'}`} style={{backgroundColor: props.mode==='light'?'white':'#212529',borderWidth: '3px'}} value={text} onChange={updateText} id="exampleFormControlTextarea1" rows="5" required ></textarea>
@@ -54,7 +84,7 @@ export default function Textforms(props) {
    <div className="form-group" />
     <div className={`container2 my-3 text-${props.mode==='light'?'dark':'light'}`}>
     <h2>Your Text Summary</h2>
-    <p>{text.split(" ").length} words and {text.length} characters</p>
+    <p>{wordCount(text)} words and {text.length} characters</p>
     <p>{0.008 * text.split(" ").length} Minutes read</p>
     <h2>Preview</h2>
     <p>{text.length>0?text:"Enter Something Above The Text Box To Preview It Here😊👍👌"}</p>
