@@ -1,4 +1,5 @@
  import React from 'react'
+ import { Link } from 'react-router-dom';
  
  export default function Navbar(props) {
    return (
@@ -10,26 +11,10 @@
   <div className="collapse navbar-collapse" id="navbarSupportedContent">
     <ul className="navbar-nav mr-auto">
       <li className="nav-item active">
-        <a className="nav-link" href="/">Home <span className="sr-only">(current)</span></a>
+        <Link className="nav-link" to="/">Home <span className="sr-only">(current)</span></Link>
       </li>
-      <li className="nav-item">
-        <a className="nav-link" href="/">Link</a>
-      </li>
-      <li className="nav-item dropdown">
-        <a className="nav-link dropdown-toggle" href="/" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Dropdown
-        </a>
-        <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a className="dropdown-item" href="/">Action1</a>
-          <a className="dropdown-item" href="/">Action2</a>
-          <a className="dropdown-item" href="/">Action3</a>
-          <a className="dropdown-item" href="/">Another action</a>
-          <div className="dropdown-divider" />
-          <a className="dropdown-item" href="/">Something else here</a>
-        </div>
-      </li>
-      <li className="nav-item">
-        <a className="nav-link disabled" href="/">Disabled</a>
+      <li className="nav-item active">
+        <Link className="nav-link about" to="/about">About</Link>
       </li>
     </ul>
     {/* <form className="form-inline my-2 my-lg-0">
