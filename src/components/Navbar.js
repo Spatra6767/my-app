@@ -4,17 +4,17 @@
  export default function Navbar(props) {
    return (
     <nav className={`navbar navbar-expand-lg navbar-${props.mode} bg-${props.mode}`}>
-  <a className="navbar-brand" href="#">SmartText</a>
+  <Link className="navbar-brand" to="/my-app">SmartText</Link>
   <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span className="navbar-toggler-icon" />
   </button>
   <div className="collapse navbar-collapse" id="navbarSupportedContent">
     <ul className="navbar-nav mr-auto">
       <li className="nav-item active">
-        <a className="nav-link" href="/">Home <span className="sr-only">(current)</span></a>
+        <Link className="nav-link" to="/my-app">Home <span className="sr-only">(current)</span></Link>
       </li>
       <li className="nav-item active">
-        <a className="nav-link about" href="/about">About</a>
+        <Link className="nav-link about" to="/about">About</Link>
       </li>
     </ul>
     {/* <form className="form-inline my-2 my-lg-0">

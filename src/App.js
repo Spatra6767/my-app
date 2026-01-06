@@ -47,13 +47,19 @@ function App() {
 
   return (
     <>
-    
+    <Router>
+        
      <Navbar mode={mode} toggleMode={toggleMode} text={text}/>
      {/* <Alert Alert={alert}/> */}
      <Alert2 Alert={alert}/>
      <div className="container my-3">
-      <Textforms mode={mode}  toggleMode={toggleMode} showAlert={showAlert}/>
+      <Routes>
+         <Route exact path="/my-app" element={<Textforms showAlert={showAlert} mode={mode} heading="Try SmartText - Word Counter, Character Counter, Remove extra spaces"/>}/>
+        <Route exact path="/about" element={<About mode={mode}/>}/>
+       
+      </Routes>
     </div>
+    </Router>
     </>
   );
 }
